@@ -1,0 +1,17 @@
+create the file .py 
+create the template file 
+then start implementing the .py file by importing the flask , render_templates
+
+app = Flask(__name__)  // give the name of the app ,
+                //now making the each directory or '/' , '/home' , '/login', '/register', etc  as a function
+
+@app.route('/')  // this is decleration of the 
+def hello():     //now define that function 
+  return render_template('filename.html', message = " string " )  // also assign the argumentslike ex message
+  
+calling the initializing the main file name form it
+if __name__ == __main__:
+  app.run()     //  it will call that name appp in line 4
+  
+  
+  
