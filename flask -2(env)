@@ -1,0 +1,25 @@
+virtualenv venv  // this will stup the environment for you
+source venv/bin/activate    // this is going to ativate the environment in that specific directory
+pip install flask     // this will install the flask module
+
+save the file in applictaion.py format  // rename the application.py name to be compiled the application file 
+
+from flask import Flask   
+from app.utils.processors import register_processors
+from app.models import db
+from app.views.index import index_bp
+from app.views.admin import admin
+
+
+def create_app(config=None, environment=None):
+    app = Flask(__name__)
+    app.config['ENVIRONMENT'] = environment     # setting up the environment
+    app.config.update(config or {})     # accesssing the properties and elements
+
+    db.init_app(app)        # initailizze the app 
+    admin.init_app(app)     # innitialize the login
+
+    app.register_blueprint(index_bp)    # saving or registering 
+    register_processors(app)             
+
+    return app
